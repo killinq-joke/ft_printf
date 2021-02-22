@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 10:27:41 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/02/19 13:57:34 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/02/22 17:04:14 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,27 @@ int		ft_printf(const char *format, ...)
 	return (0);
 }
 
-void	*ft_parser(const char *format)
+t_pars	ft_parser(const char *format)
+{
+	int		i;
+	t_pars	pars;
+
+	pars = ft_parsinit();
+	i = 0;
+	while (format[i])
+	{
+		if (ft_isin("cspdiuxX%", format[i]))
+			pars.convert = format[i];
+		else if (ft_isin("0123456789-.*", format[i]))
+		{
+			ft_flag(format[i], pars);
+		}
+	}
+}
+
+void	ft_flag(const char *format, t_pars pars)
 {
 	int i;
-	t_pars pars;
 
 	i = 0;
 	if (format[0] == '0')
@@ -42,9 +59,20 @@ void	*ft_parser(const char *format)
 		pars.zero = 1;
 		i++;
 	}
-	while (format[i])
+	else if (ft_isdigit(format[i]))
 	{
 		
-		i++;
 	}
+}
+
+t_pars	ft_parsinit(void)
+{
+	t_pars pars;
+
+	pars.converter = 0;
+	pars.zero = 0;
+	pars.minus = 0;
+	pars.precision = 0;
+	pars.width = 0;
+	return (pars);
 }
