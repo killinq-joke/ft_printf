@@ -8,7 +8,9 @@ int main()
 	printf("%.10d salut\n", 10);
 	printf("%.10i salut\n", 10);
 	printf("%.10u salut\n", 10);
-	printf("%.10x salut\n", 10);
+	printf("%0-10x salut\n", 10);
 	printf("%.010X salut\n", 10);
 	printf("%% salut\n");
 }
+
+

@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 10:27:41 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/02/22 17:04:14 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/02/22 17:39:49 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,24 @@ t_pars	ft_parser(const char *format)
 
 void	ft_flag(const char *format, t_pars pars)
 {
-	int i;
+	int		i;
+	char	*width;
 
 	i = 0;
-	if (format[0] == '0')
+	if (format[i] == '-')
+		pars.minus = 1;
+	else if (format[0] == '0')
 	{
 		pars.zero = 1;
 		i++;
 	}
-	else if (ft_isdigit(format[i]))
+	if (ft_isdigit(format[i]))
 	{
-		
+		while (ft_isdigit(format[i + j]))
+			j++;
+		width = ft_substr(format[i], 0, j);
+		pars.width = ft_atoi(width);
+		i += j;
 	}
 }
 
