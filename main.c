@@ -1,16 +1,17 @@
 #include <stdio.h>
+#include "ft_printf.h"
+
+
 int main()
 {
-	int a = 10;
-	printf("%10c salut\n", 'c');
-	printf("%.2s salut\n", "dix");
-	printf("%20p salut\n", &a);
-	printf("%.10d salut\n", 10);
-	printf("%.10i salut\n", 10);
-	printf("%.10u salut\n", 10);
-	printf("%0-10x salut\n", 10);
-	printf("%.010X salut\n", 10);
-	printf("%% salut\n");
+	va_list args;
+	//printf("%10d", 10);
+	t_pars pars = ft_parsinit();
+
+	ft_parser("%10.20d", &pars, args);
+	printf("pars->width == %d\n", pars.width);
+	printf("pars->precision == %d\n", pars.precision);
+	printf("pars->convert == %c\n", pars.convert);
+	va_end(args);
+	return (0);
 }
-
-
