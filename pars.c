@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:23:35 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/05 13:59:15 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/05 14:33:57 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ int		ft_widthprecision_pars(const char *format, t_pars *pars, va_list args)
 	if (format[i] == '*')
 	{
 		pars->width = va_arg(args, int);
+		if (pars->width < 0)
+		{
+			pars->width *= -1;
+			pars->minus = 1;
+		}
 		i++;
 		i += ft_precision_pars(&format[i], pars, args);
 	}
