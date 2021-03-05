@@ -10,6 +10,7 @@ typedef struct	s_pars {
 	int		minus;
 	int		width;
 	int		neg;
+	int		null;
 	int		precision;
 	int		precision_on;
 	char	convert;

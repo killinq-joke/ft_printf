@@ -8,11 +8,11 @@ int main()
 	//printf("%10d", 10);
 	//t_pars pars = ft_parsinit();
 
-	char *format = "%.20x\n";
+	char *format = "%.0d\n";
 	//int width = 0;
 	//int precision = 0;
-	ft_printf(format, -32);
-	printf(format, -32);
+	ft_printf(format, 0);
+	printf(format, 0);
 	//ft_printf(format, width, precision, "fweoifjwiewfwe");
 	//printf(format, width, precision, "fweoifjwiewfwe");
 	/*printf("pars->width == %d\n", pars.width);

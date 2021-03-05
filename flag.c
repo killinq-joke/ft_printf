@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 11:54:46 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/05 15:15:28 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/05 17:28:07 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int		ft_minus_handler(t_pars *pars)
 
 	i = 0;
 	j = 0;
+	if (pars->null && pars->precision == 0)
+		return (0);
 	if (pars->convert == 's')
 	{
 		while (pars->str[j] && (pars->precision-- != 0 || !pars->precision_on))
@@ -71,6 +73,8 @@ int		ft_minus_handler(t_pars *pars)
 	}
 	else
 	{
+		if (pars->neg == 1)
+			i += ft_putchar('-');
 		if (pars->convert == 'p')
 			i += ft_putstr("0x");
 		while (pars->precision-- > (int)ft_strlen(pars->str))
@@ -90,6 +94,8 @@ int		ft_nominus_handler(t_pars *pars)
 
 	i = 0;
 	j = 0;
+	if (pars->null && pars->precision == 0)
+		return (0);
 	if (pars->convert == 's')
 	{
 		while (pars->width > pars->precision
@@ -101,11 +107,13 @@ int		ft_nominus_handler(t_pars *pars)
 	}
 	else
 	{
-		while (pars->width - ((pars->convert == 'p') ? 2 : 0) > (int)ft_strlen(pars->str)
-				&& pars->width-- - ((pars->convert == 'p') ? 2 : 0) > pars->precision)
-			i += ft_putchar((pars->zero && pars->precision_on) ? '0' : ' ');
+		while (pars->width - ((pars->convert == 'p') ? 2 : 0) - pars->neg > (int)ft_strlen(pars->str)
+				&& pars->width-- - ((pars->convert == 'p') ? 2 : 0) - pars->neg > pars->precision)
+			i += ft_putchar((pars->zero && !pars->precision_on) ? '0' : ' ');
 		if (pars->convert == 'p')
 			i += ft_putstr("0x");
+		if (pars->neg == 1)
+			i += ft_putchar('-');
 		while (pars->precision-- > (int)ft_strlen(pars->str))
 			i += ft_putchar('0');
 		i += ft_putstr(pars->str);

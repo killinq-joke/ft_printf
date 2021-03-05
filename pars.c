@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:23:35 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/05 16:08:18 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/05 17:07:00 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_pars	ft_parsinit(void)
 	pars.minus = 0;
 	pars.width = 0;
 	pars.neg = 0;
+	pars.null = 0;
 	pars.precision = 0;
 	pars.precision_on = 0;
 	pars.convert = 0;
