@@ -6,12 +6,11 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:23:35 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/04 16:58:01 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/05 13:59:15 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 t_pars	ft_parsinit(void)
 {
@@ -20,7 +19,8 @@ t_pars	ft_parsinit(void)
 	pars.zero = 0;
 	pars.minus = 0;
 	pars.width = 0;
-	pars.precision = -1;
+	pars.precision = 0;
+	pars.precision_on = 0;
 	pars.convert = 0;
 	pars.str = 0;
 	return (pars);
@@ -59,6 +59,7 @@ int		ft_precision_pars(const char *format, t_pars *pars, va_list args)
 		if (format[i] == '*')
 		{
 			pars->precision = va_arg(args, int);
+			pars->precision_on = 1;
 			i++;
 		}
 		else if (ft_isdigit(format[i]))
@@ -68,6 +69,7 @@ int		ft_precision_pars(const char *format, t_pars *pars, va_list args)
 				j++;
 			tmp = ft_substr(&format[i], 0, j);
 			pars->precision = ft_atoi(tmp);
+			pars->precision_on = 1;
 			free(tmp);
 			i += j;
 		}
@@ -99,6 +101,8 @@ int		ft_widthprecision_pars(const char *format, t_pars *pars, va_list args)
 		i += j;
 		i += ft_precision_pars(&format[i], pars, args);
 	}
+	else
+		i += ft_precision_pars(&format[i], pars, args);
 	return (i);
 }
 
