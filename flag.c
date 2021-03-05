@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 11:54:46 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/05 14:30:44 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/05 15:15:28 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		ft_minus_handler(t_pars *pars)
 	j = 0;
 	if (pars->convert == 's')
 	{
-		while (pars->str[j] && pars->precision-- != 0)
+		while (pars->str[j] && (pars->precision-- != 0 || !pars->precision_on))
 			j += ft_putchar(pars->str[j]);
 		i += j;
 		if (pars->width > pars->precision)
@@ -95,7 +95,7 @@ int		ft_nominus_handler(t_pars *pars)
 		while (pars->width > pars->precision
 				&& pars->width-- > pars->precision)
 			i += ft_putchar(pars->zero ? '0' : ' ');
-		while (pars->str[j] && pars->precision-- != 0)
+		while (pars->str[j] && (pars->precision-- != 0 || !pars->precision_on))
 			j += ft_putchar(pars->str[j]);
 		i += j;
 	}

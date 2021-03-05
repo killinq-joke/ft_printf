@@ -8,11 +8,13 @@ int main()
 	//printf("%10d", 10);
 	//t_pars pars = ft_parsinit();
 
-	char *format = "%*.*s\n";
-	int width = -100;
-	int precision = 10;
-	ft_printf(format, width, precision, "salut c'est zak");
-	printf(format, width, precision, "salut c'est zak");
+	char *format = "%.20x\n";
+	//int width = 0;
+	//int precision = 0;
+	ft_printf(format, -32);
+	printf(format, -32);
+	//ft_printf(format, width, precision, "fweoifjwiewfwe");
+	//printf(format, width, precision, "fweoifjwiewfwe");
 	/*printf("pars->width == %d\n", pars.width);
 	printf("pars->precision == %d\n", pars.precision);
 	printf("pars->convert == %c\n", pars.convert);*/

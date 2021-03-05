@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 10:54:56 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/05 14:23:39 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/05 15:00:14 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ int		ft_printf(const char *format, ...)
 			if ((pars_ret = ft_parser(&format[i], &pars, args)) == -1)
 				return (-1);
 			i += pars_ret;
-			printf("pars.zero == %d\n", pars.zero);
+			/*printf("pars.zero == %d\n", pars.zero);
 			printf("pars.width == %d\n", pars.width);
 			printf("pars.precision == %d\n", pars.precision);
 			printf("pars.minus == %d\n", pars.minus);
-			printf("pars.convert == %c\n", pars.convert);
+			printf("pars.convert == %c\n", pars.convert);*/
 			ft_converttostr(&pars, args);
-			ft_translate(&pars);
+			res += ft_translate(&pars);
 		}
 		else
 			res += ft_putchar(format[i]);
