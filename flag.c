@@ -61,7 +61,12 @@ int		ft_minus_handler(t_pars *pars)
 	i = 0;
 	j = 0;
 	if (pars->null && pars->precision == 0)
-		return (0);
+	{
+		if (pars->width > pars->precision)
+			while (pars->width - i > 0)
+				i += ft_putchar(' ');
+		return (i);
+	}
 	if (pars->convert == 's')
 	{
 		while (pars->str[j] && (pars->precision-- != 0 || !pars->precision_on))
@@ -95,7 +100,12 @@ int		ft_nominus_handler(t_pars *pars)
 	i = 0;
 	j = 0;
 	if (pars->null && pars->precision == 0)
-		return (0);
+	{
+		if (pars->width > pars->precision)
+			while (pars->width - i > 0)
+				i += ft_putchar(' ');
+		return (i);
+	}
 	if (pars->convert == 's')
 	{
 		while (pars->width > pars->precision
