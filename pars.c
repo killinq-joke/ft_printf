@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:23:35 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/08 09:36:40 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/08 13:05:12 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int		ft_parser(const char *format, t_pars *pars, va_list args)
 		return (-1);
 	i += ft_zerominus_pars(&format[i], pars);
 	i += ft_widthprecision_pars(&format[i], pars, args);
-	if (ft_isin("cspdiuxX%", format[i]))
+	if (ft_isin("cspdiuxX%", format[i]) != -1)
 	{
 		pars->convert = format[i];
 		return (i);

@@ -9,7 +9,7 @@ int main()
 	//printf("%10d", 10);
 	//t_pars pars = ft_parsinit();
 
-	char	*format = "%0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d\n";
+	char	*format = "%c\n";
 	char	*printf_fmt = ft_strjoin("--printf ==>", format);
 	char	*ft_printf_fmt = ft_strjoin("ftprintf ==>", format);
 	int		a = -4;
@@ -33,8 +33,9 @@ int main()
 	char	*s = "-2147483648";
 	char	*t = "0x12345678";
 	char	*u = "-0";
-	printf("ft_printf return ==> %d\n", ft_printf(ft_printf_fmt, i, 3, -2, j, 3, -2, k, 3, -2, l, 3, -2, m, 3, -2, c, 3, -2, e, 3, -2, d,   3, -2);
-	printf("printf return ==> %d\n", printf(printf_fmt, i, 3, -2, j, 3, -2, k, 3, -2, l, 3, -2, m, 3, -2, c, 3, -2, e, 3, -2, d, 3, -2));
+
+	printf("ft_printf return ==> %d\n", ft_printf(ft_printf_fmt, 'a'));
+	printf("printf return ==> %d\n", printf(printf_fmt, 'a'));
 	//ft_printf(format, width, precision, "fweoifjwiewfwe");
 	//printf(format, width, precision, "fweoifjwiewfwe");
 	/*printf("pars->width == %d\n", pars.width);
