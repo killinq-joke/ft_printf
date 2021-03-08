@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 #include "ft_printf.h"
 
 
@@ -8,11 +9,14 @@ int main()
 	//printf("%10d", 10);
 	//t_pars pars = ft_parsinit();
 
-	char *format = "%10.d\n";
+	char *format = "%4d\n";
+	char *printf_fmt = ft_strjoin("--printf ==>", format);
+	char *ft_printf_fmt = ft_strjoin("ftprintf ==>", format);
+	int	d = INT_MIN;
 	//int width = 0;
 	//int precision = 0;
-	printf("%d\n", ft_printf(format, 0));
-	printf("%d\n", printf(format, 0));
+	printf("ft_printf return ==> %d\n", ft_printf(ft_printf_fmt, d));
+	printf("printf return ==> %d\n", printf(printf_fmt, d));
 	//ft_printf(format, width, precision, "fweoifjwiewfwe");
 	//printf(format, width, precision, "fweoifjwiewfwe");
 	/*printf("pars->width == %d\n", pars.width);

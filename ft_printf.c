@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 10:54:56 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/05 17:08:11 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/08 08:53:14 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_inttostr(t_pars *pars, va_list args)
 	nb = 0;
 	if (ft_isin("di", pars->convert) != -1)
 	{
-		nb = va_arg(args, int);
+		nb = va_arg(args, long);
 		if (nb < 0)
 		{
 			nb *= -1;
