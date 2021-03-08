@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 11:54:46 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/05 17:28:07 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/08 09:58:03 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		ft_minus_handler(t_pars *pars)
 
 	i = 0;
 	j = 0;
-	if (pars->null && pars->precision == 0)
+	if (pars->null && pars->precision == 0 && pars->precision_on)
 	{
 		if (pars->width > pars->precision)
 			while (pars->width - i > 0)
@@ -82,6 +82,7 @@ int		ft_minus_handler(t_pars *pars)
 			i += ft_putchar('-');
 		if (pars->convert == 'p')
 			i += ft_putstr("0x");
+		//printf("pars->precision == %d, pars->str == %s, pars->neg == %d\n", pars->precision, pars->str, pars->neg);
 		while (pars->precision-- > (int)ft_strlen(pars->str))
 			i += ft_putchar('0');
 		i += ft_putstr(pars->str);
@@ -99,7 +100,7 @@ int		ft_nominus_handler(t_pars *pars)
 
 	i = 0;
 	j = 0;
-	if (pars->null && pars->precision == 0)
+	if (pars->null && pars->precision == 0 && pars->precision_on)
 	{
 		if (pars->width > pars->precision)
 			while (pars->width - i > 0)

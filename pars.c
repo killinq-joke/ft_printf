@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:23:35 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/05 17:07:00 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/08 09:36:40 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int		ft_precision_pars(const char *format, t_pars *pars, va_list args)
 	if (format[i] == '.')
 	{
 		i++;
+		pars->precision_on = 1;
 		if (format[i] == '*')
 		{
 			pars->precision = va_arg(args, int);
-			pars->precision_on = 1;
 			i++;
 		}
 		else if (ft_isdigit(format[i]))
@@ -71,7 +71,6 @@ int		ft_precision_pars(const char *format, t_pars *pars, va_list args)
 				j++;
 			tmp = ft_substr(&format[i], 0, j);
 			pars->precision = ft_atoi(tmp);
-			pars->precision_on = 1;
 			free(tmp);
 			i += j;
 		}
@@ -117,6 +116,7 @@ int		ft_parser(const char *format, t_pars *pars, va_list args)
 {
 	int	i;
 
+	*pars = ft_parsinit();
 	i = 1;
 	if (ft_zerominus_pars(&format[i], pars) == -1)
 		return (-1);

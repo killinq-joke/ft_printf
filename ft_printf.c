@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 10:54:56 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/08 08:53:14 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/08 10:10:34 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,9 @@ void	ft_inttostr(t_pars *pars, va_list args)
 	nb = 0;
 	if (ft_isin("di", pars->convert) != -1)
 	{
-		nb = va_arg(args, long);
+		nb = va_arg(args, int);
 		if (nb < 0)
-		{
-			nb *= -1;
 			pars->neg = 1;
-		}
 		if (nb == 0)
 			pars->null = 1;
 		pars->str = ft_itoa(nb);
@@ -64,7 +61,6 @@ int		ft_printf(const char *format, ...)
 	t_pars	pars;
 
 	va_start(args, format);
-	pars = ft_parsinit();
 	i = 0;
 	res = 0;
 	while (format[i])
