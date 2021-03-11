@@ -56,3 +56,22 @@ char		*ft_itoa(int n)
 	res[i] = '\0';
 	return (ft_strrev(res));
 }
+
+char		*ft_utoa(unsigned int n)
+{
+	char	*res;
+	size_t	i;
+
+	if (!(res = malloc(13)))
+		return (NULL);
+	i = 0;
+	if (n == 0)
+		res[i++] = 0 + '0';
+	while (n > 0)
+	{
+		res[i++] = (n % 10) + '0';
+		n /= 10;
+	}
+	res[i] = '\0';
+	return (ft_strrev(res));
+}

@@ -31,7 +31,7 @@ void	ft_inttostr(t_pars *pars, va_list args)
 	else if (pars->convert == 'X')
 		pars->str = ft_itoa_base(va_arg(args, unsigned int), "0123456789ABCDEF");
 	else if (pars->convert == 'u')
-		pars->str = ft_itoa(va_arg(args, unsigned int));
+		pars->str = ft_utoa(va_arg(args, unsigned int));
 }
 
 void	ft_converttostr(t_pars *pars, va_list args)

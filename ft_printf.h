@@ -30,6 +30,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 int		strprecision_handler(char *str, int precision);
 int		ft_atoi(const char *nptr);
 char	*ft_itoa(int n);
+char	*ft_utoa(unsigned int n);
 int		ft_isdigit(int c);
 char	*ft_itoa_base(long nbr, char *base);
 char	*ft_ztoa_base(size_t nbr, char *base);
