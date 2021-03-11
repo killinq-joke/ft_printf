@@ -109,8 +109,9 @@ int		ft_nominus_handler(t_pars *pars)
 	{
 		while (pars->width-- > (int)ft_strlen(pars->str))
 			i += ft_putchar(pars->zero ? '0' : ' ');
-		while (pars->str[j] && (pars->precision-- != 0 || !pars->precision_on))
-			j += ft_putchar(pars->str[j]);
+		if (pars->str)
+			while (pars->str[j] && (pars->precision-- != 0 || !pars->precision_on))
+				j += ft_putchar(pars->str[j]);
 		i += j;
 	}
 	else
