@@ -82,7 +82,6 @@ int		ft_minus_handler(t_pars *pars)
 			i += ft_putchar('-');
 		if (pars->convert == 'p')
 			i += ft_putstr("0x");
-		//printf("pars->precision == %d, pars->str == %s, pars->neg == %d\n", pars->precision, pars->str, pars->neg);
 		while (pars->precision-- > (int)ft_strlen(pars->str))
 			i += ft_putchar('0');
 		i += ft_putstr(pars->str);

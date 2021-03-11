@@ -40,11 +40,10 @@ int		ft_zerominus_pars(const char *format, t_pars *pars)
 	}
 	while (format[i] == '-')
 	{
+		pars->zero = 0;
 		pars->minus = 1;
 		i++;
 	}
-	if (pars->zero && pars->minus)
-		return (-1);
 	return (i);
 }
 
@@ -62,6 +61,8 @@ int		ft_precision_pars(const char *format, t_pars *pars, va_list args)
 		if (format[i] == '*')
 		{
 			pars->precision = va_arg(args, int);
+			if (pars->precision < 0)
+				pars->precision_on = 0;
 			i++;
 		}
 		else if (ft_isdigit(format[i]))
@@ -118,8 +119,6 @@ int		ft_parser(const char *format, t_pars *pars, va_list args)
 
 	*pars = ft_parsinit();
 	i = 1;
-	if (ft_zerominus_pars(&format[i], pars) == -1)
-		return (-1);
 	i += ft_zerominus_pars(&format[i], pars);
 	i += ft_widthprecision_pars(&format[i], pars, args);
 	if (ft_isin("cspdiuxX%", format[i]) != -1)
