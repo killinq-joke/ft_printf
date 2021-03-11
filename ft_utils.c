@@ -35,6 +35,8 @@ int		itoa_converter(long nbr, char *result, char *base)
         int i;
 
         i = 0;
+	if (nbr == 0)
+                result[i++] = base[(nbr % ft_strlen(base))];
         while (nbr > 0)
         {
                 result[i++] = base[(nbr % ft_strlen(base))];
@@ -79,3 +81,11 @@ char    *ft_ztoa_base(size_t nbr, char *base)
         result[i] = '\0';
         return (result);
 }
+
+/*
+#include <stdio.h>
+int main()
+{
+	printf("%s\n", ft_itoa_base(0, "0123456789abcdef"));
+	return (0);
+}*/

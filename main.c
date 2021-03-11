@@ -9,7 +9,7 @@ int main()
 	//printf("%10d", 10);
 	//t_pars pars = ft_parsinit();
 
-	char	*format = "%c\n";
+	char	*format = "%x\n";
 	char	*printf_fmt = ft_strjoin("--printf ==>", format);
 	char	*ft_printf_fmt = ft_strjoin("ftprintf ==>", format);
 	int		a = -4;
@@ -34,14 +34,8 @@ int main()
 	char	*t = "0x12345678";
 	char	*u = "-0";
 
-	printf("ft_printf return ==> %d\n", ft_printf(ft_printf_fmt, 'a'));
-	printf("printf return ==> %d\n", printf(printf_fmt, 'a'));
-	//ft_printf(format, width, precision, "fweoifjwiewfwe");
-	//printf(format, width, precision, "fweoifjwiewfwe");
-	/*printf("pars->width == %d\n", pars.width);
-	printf("pars->precision == %d\n", pars.precision);
-	printf("pars->convert == %c\n", pars.convert);*/
-	printf("salut %3d", -12);
+	printf("ft_printf return ==> %d\n", ft_printf(ft_printf_fmt, 0));
+	printf("printf return ==> %d\n", printf(printf_fmt, 0));
 	va_end(args);
 	return (0);
 }

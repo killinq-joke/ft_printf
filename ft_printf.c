@@ -27,11 +27,26 @@ void	ft_inttostr(t_pars *pars, va_list args)
 		pars->str = ft_itoa(nb);
 	}
 	else if (pars->convert == 'x')
-		pars->str = ft_itoa_base(va_arg(args, unsigned int), "0123456789abcdef");
+	{
+		nb = va_arg(args, unsigned int);
+		if (nb == 0)
+			pars->null = 1;
+		pars->str = ft_itoa_base(nb, "0123456789abcdef");
+	}
 	else if (pars->convert == 'X')
-		pars->str = ft_itoa_base(va_arg(args, unsigned int), "0123456789ABCDEF");
+	{
+		nb = va_arg(args, unsigned int);
+		if (nb == 0)
+			pars->null = 1;
+		pars->str = ft_itoa_base(nb, "0123456789ABCDEF");
+	}
 	else if (pars->convert == 'u')
-		pars->str = ft_utoa(va_arg(args, unsigned int));
+	{
+		nb = va_arg(args, unsigned int);
+		if (nb == 0)
+			pars->null = 1;
+		pars->str = ft_utoa(nb);
+	}
 }
 
 void	ft_converttostr(t_pars *pars, va_list args)
@@ -70,11 +85,6 @@ int		ft_printf(const char *format, ...)
 			if ((pars_ret = ft_parser(&format[i], &pars, args)) == -1)
 				return (-1);
 			i += pars_ret;
-			/*printf("pars.zero == %d\n", pars.zero);
-			printf("pars.width == %d\n", pars.width);
-			printf("pars.precision == %d\n", pars.precision);
-			printf("pars.minus == %d\n", pars.minus);
-			printf("pars.convert == %c\n", pars.convert);*/
 			ft_converttostr(&pars, args);
 			res += ft_translate(&pars);
 		}
