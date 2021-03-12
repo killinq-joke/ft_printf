@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 10:54:56 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/08 10:10:34 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/12 15:20:49 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,11 @@ void	ft_converttostr(t_pars *pars, va_list args)
 		pars->str[1] = '\0';
 	}
 	else if (pars->convert == 's')
+	{
 		pars->str = va_arg(args, char *);
+		if (pars->str == 0)
+			pars->str = "(null)";
+	}
 	else if (ft_isin("diuxX", pars->convert) != -1)
 		ft_inttostr(pars, args);
 	else if (pars->convert == 'p')

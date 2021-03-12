@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:23:35 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/08 13:05:12 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/12 15:29:13 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,29 @@ t_pars	ft_parsinit(void)
 int		ft_zerominus_pars(const char *format, t_pars *pars)
 {
 	int	i;
+	int	zero;
 
+	zero = 1;
 	i = 0;
-	while (format[i] == '0')
+	while (format[i] == '-' || format[i] == '0')
 	{
-		pars->zero = 1;
+		if (format[i] == '-')
+		{
+			pars->minus = 1;
+			zero = 0;
+		}
+		if (format[i] == '0')
+			pars->zero = 1;
 		i++;
 	}
-	while (format[i] == '-')
+	/*while (format[i] == '-')
 	{
 		pars->zero = 0;
 		pars->minus = 1;
 		i++;
-	}
+	}*/
+	if (!zero)
+		pars->zero = 0;
 	return (i);
 }
 
