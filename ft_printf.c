@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ztouzri <ztouzri@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 10:54:56 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/14 09:09:03 by ztouzri          ###   ########.fr       */
+/*   Created: 2021/03/14 18:24:41 by ztouzri           #+#    #+#             */
+/*   Updated: 2021/03/14 18:24:44 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		ft_digitconvert(const char *format, t_pars *pars, int is_width)
+{
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	while (ft_isdigit(format[i]))
+		i++;
+	tmp = ft_substr(format, 0, i);
+	if (is_width)
+		pars->width = ft_atoi(tmp);
+	else
+		pars->precision = ft_atoi(tmp);
+	free(tmp);
+	return (i);
+}
 
 long	ft_di(t_pars *pars, va_list args)
 {

@@ -1,4 +1,4 @@
-SRCS	= ft_printf.c flag.c pars.c ft_utils.c\
+SRCS	= ft_printf.c ft_handlers.c flag.c pars.c ft_utils.c\
 		libft/ft_putstr.c libft/ft_isin.c\
 		libft/ft_strlen.c libft/ft_atoi.c\
 		libft/ft_bzero.c libft/ft_calloc.c\

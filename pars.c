@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ztouzri <ztouzri@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 11:23:35 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/12 15:29:13 by ztouzri          ###   ########.fr       */
+/*   Created: 2021/03/14 18:25:21 by ztouzri           #+#    #+#             */
+/*   Updated: 2021/03/14 18:25:21 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ int		ft_zerominus_pars(const char *format, t_pars *pars)
 
 int		ft_precision_pars(const char *format, t_pars *pars, va_list args)
 {
-	int		i;
-	int		j;
-	char	*tmp;
+	int	i;
 
 	i = 0;
 	if (format[i] == '.')
@@ -70,24 +68,14 @@ int		ft_precision_pars(const char *format, t_pars *pars, va_list args)
 			i++;
 		}
 		else if (ft_isdigit(format[i]))
-		{
-			j = 0;
-			while (ft_isdigit(format[i + j]))
-				j++;
-			tmp = ft_substr(&format[i], 0, j);
-			pars->precision = ft_atoi(tmp);
-			free(tmp);
-			i += j;
-		}
+			i += ft_digitconvert(&format[i], pars, 0);
 	}
 	return (i);
 }
 
 int		ft_widthprecision_pars(const char *format, t_pars *pars, va_list args)
 {
-	char	*tmp;
 	int		i;
-	int		j;
 
 	i = 0;
 	if (format[i] == '*')
@@ -103,13 +91,7 @@ int		ft_widthprecision_pars(const char *format, t_pars *pars, va_list args)
 	}
 	else if (ft_isdigit(format[i]))
 	{
-		j = 0;
-		while (ft_isdigit(format[i + j]))
-			j++;
-		tmp = ft_substr(&format[i], 0, j);
-		pars->width = ft_atoi(tmp);
-		free(tmp);
-		i += j;
+		i += ft_digitconvert(&format[i], pars, 1);
 		i += ft_precision_pars(&format[i], pars, args);
 	}
 	else
