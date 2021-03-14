@@ -84,7 +84,9 @@ int		ft_minus_handler(t_pars *pars)
 		while (pars->precision-- > (int)ft_strlen(pars->str))
 			i += ft_putchar('0');
 		i += ft_putstr(pars->str);
-		if (pars->width > pars->precision)
+		if (pars->convert == 'c' && pars->str[0] == 0)
+			i += ft_putchar(0);
+		if (pars->width > pars->precision + (pars->convert == 'c' && pars->str[0] == 0))
 			while (pars->width - i > 0)
 				i += ft_putchar(' ');
 	}
@@ -127,7 +129,7 @@ int		ft_nominus_handler(t_pars *pars)
 	{
 		if (pars->neg == 1 && pars->zero && !pars->precision_on)
 			i += ft_putchar('-');
-		while (pars->width - ((pars->convert == 'p') ? 2 : 0) - pars->neg > (int)ft_strlen(pars->str)
+		while (pars->width - ((pars->convert == 'p') ? 2 : 0) - pars->neg > (int)ft_strlen(pars->str) + (pars->convert == 'c' && pars->str[0] == 0)
 				&& pars->width-- - ((pars->convert == 'p') ? 2 : 0) - pars->neg > pars->precision)
 			i += ft_putchar((pars->zero && !pars->precision_on) ? '0' : ' ');
 		if (pars->convert == 'p')
@@ -137,6 +139,8 @@ int		ft_nominus_handler(t_pars *pars)
 		while (pars->precision-- > (int)ft_strlen(pars->str))
 			i += ft_putchar('0');
 		i += ft_putstr(pars->str);
+		if (pars->convert == 'c' && pars->str[0] == 0)
+			i += ft_putchar(0);
 	}
 	return (i);
 }
