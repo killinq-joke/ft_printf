@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 11:54:46 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/08 09:58:03 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/14 09:06:07 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,5 +156,6 @@ int		ft_translate(t_pars *pars)
 		i += ft_minus_handler(pars);
 	else
 		i += ft_nominus_handler(pars);
+	free(pars->str);
 	return (i);
 }

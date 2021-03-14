@@ -6,7 +6,7 @@
 /*   By: ztouzri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 10:54:56 by ztouzri           #+#    #+#             */
-/*   Updated: 2021/03/12 15:20:49 by ztouzri          ###   ########.fr       */
+/*   Updated: 2021/03/14 09:09:03 by ztouzri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	ft_inttostr(t_pars *pars, va_list args)
 
 void	ft_converttostr(t_pars *pars, va_list args)
 {
+	char	*str;
 	if (pars->convert == 'c')
 	{
 		pars->str = malloc(2);
@@ -59,16 +60,18 @@ void	ft_converttostr(t_pars *pars, va_list args)
 	}
 	else if (pars->convert == 's')
 	{
-		pars->str = va_arg(args, char *);
-		if (pars->str == 0)
-			pars->str = "(null)";
+		str = va_arg(args, char *);
+		if (str == 0)
+			pars->str = ft_strdup("(null)");
+		else
+			pars->str = ft_strdup(str);
 	}
 	else if (ft_isin("diuxX", pars->convert) != -1)
 		ft_inttostr(pars, args);
 	else if (pars->convert == 'p')
 		pars->str = ft_ztoa_base(va_arg(args, size_t), "0123456789abcdef");
 	else if (pars->convert == '%')
-		pars->str = "%";
+		pars->str = ft_strdup("%");
 }
 
 int		ft_printf(const char *format, ...)
