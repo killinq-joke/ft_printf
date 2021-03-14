@@ -69,7 +69,7 @@ void	ft_converttostr(t_pars *pars, va_list args)
 	else if (ft_isin("diuxX", pars->convert) != -1)
 		ft_inttostr(pars, args);
 	else if (pars->convert == 'p')
-		pars->str = ft_ztoa_base(va_arg(args, size_t), "0123456789abcdef");
+		pars->str = ft_ztoa_base(va_arg(args, long long), "0123456789abcdef");
 	else if (pars->convert == '%')
 		pars->str = ft_strdup("%");
 }

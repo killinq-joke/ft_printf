@@ -33,7 +33,7 @@ char	*ft_itoa(int n);
 char	*ft_utoa(unsigned int n);
 int		ft_isdigit(int c);
 char	*ft_itoa_base(long nbr, char *base);
-char	*ft_ztoa_base(size_t nbr, char *base);
+char	*ft_ztoa_base(unsigned long long nbr, char *base);
 int		ft_isin(char *str, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_putstr(char *str);

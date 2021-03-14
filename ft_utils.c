@@ -30,7 +30,22 @@ void    *ft_strrev(char *str)
         return (str);
 }
 
-int		itoa_converter(long nbr, char *result, char *base)
+int		itoa_converter(long long nbr, char *result, char *base)
+{
+        int i;
+
+        i = 0;
+	if (nbr == 0)
+                result[i++] = base[(nbr % ft_strlen(base))];
+        while (nbr > 0)
+        {
+                result[i++] = base[(nbr % ft_strlen(base))];
+                nbr /= ft_strlen(base);
+        }
+        return (i);
+}
+
+int		ztoa_converter(unsigned long long nbr, char *result, char *base)
 {
         int i;
 
@@ -68,24 +83,16 @@ char    *ft_itoa_base(long nbr, char *base)
         return (result);
 }
 
-char    *ft_ztoa_base(size_t nbr, char *base)
+char    *ft_ztoa_base(unsigned long long nbr, char *base)
 {
         char    *result;
         int             i;
 
         if (!(result = malloc(sizeof(char) * 50)))
                 return (NULL);
-        i = itoa_converter(nbr, result, base);
+        i = ztoa_converter(nbr, result, base);
         result[i] = '\0';
         result = ft_strrev(result);
         result[i] = '\0';
         return (result);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-	printf("%s\n", ft_itoa_base(0, "0123456789abcdef"));
-	return (0);
-}*/
