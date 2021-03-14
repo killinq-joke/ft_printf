@@ -12,11 +12,8 @@
 
 #include "ft_printf.h"
 
-void	ft_inttostr(t_pars *pars, va_list args)
+int		ft_di(t_pars *pars, va_list args)
 {
-	long nb;
-
-	nb = 0;
 	if (ft_isin("di", pars->convert) != -1)
 	{
 		nb = va_arg(args, int);
@@ -25,8 +22,18 @@ void	ft_inttostr(t_pars *pars, va_list args)
 		if (nb == 0)
 			pars->null = 1;
 		pars->str = ft_itoa(nb);
+		return (1);
 	}
-	else if (pars->convert == 'x')
+	return (0);
+}
+
+void	ft_inttostr(t_pars *pars, va_list args)
+{
+	long nb;
+
+	nb = 0;
+	ft_di(pars, args);
+	if (pars->convert == 'x')
 	{
 		nb = va_arg(args, unsigned int);
 		if (nb == 0)
@@ -52,6 +59,7 @@ void	ft_inttostr(t_pars *pars, va_list args)
 void	ft_converttostr(t_pars *pars, va_list args)
 {
 	char	*str;
+
 	if (pars->convert == 'c')
 	{
 		pars->str = malloc(2);

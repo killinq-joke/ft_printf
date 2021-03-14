@@ -3,7 +3,6 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
-#include <stdio.h>
 
 typedef struct	s_pars {
 	int		zero;
@@ -15,7 +14,7 @@ typedef struct	s_pars {
 	int		precision_on;
 	char	convert;
 	char	*str;
-}		t_pars;
+}				t_pars;
 
 int		ft_printf(const char *format, ...);
 t_pars	ft_parsinit(void);
