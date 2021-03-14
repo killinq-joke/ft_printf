@@ -12,8 +12,10 @@
 
 #include "ft_printf.h"
 
-int		ft_di(t_pars *pars, va_list args)
+long	ft_di(t_pars *pars, va_list args)
 {
+	long nb;
+
 	if (ft_isin("di", pars->convert) != -1)
 	{
 		nb = va_arg(args, int);
@@ -22,7 +24,7 @@ int		ft_di(t_pars *pars, va_list args)
 		if (nb == 0)
 			pars->null = 1;
 		pars->str = ft_itoa(nb);
-		return (1);
+		return (nb);
 	}
 	return (0);
 }
@@ -31,8 +33,7 @@ void	ft_inttostr(t_pars *pars, va_list args)
 {
 	long nb;
 
-	nb = 0;
-	ft_di(pars, args);
+	nb = ft_di(pars, args);
 	if (pars->convert == 'x')
 	{
 		nb = va_arg(args, unsigned int);
