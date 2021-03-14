@@ -46,12 +46,6 @@ int		ft_zerominus_pars(const char *format, t_pars *pars)
 			pars->zero = 1;
 		i++;
 	}
-	/*while (format[i] == '-')
-	{
-		pars->zero = 0;
-		pars->minus = 1;
-		i++;
-	}*/
 	if (!zero)
 		pars->zero = 0;
 	return (i);

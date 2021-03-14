@@ -15,6 +15,8 @@ int main()
 
 	printf("ft_printf return ==> %d\n", ft_printf(ft_printf_fmt, 4, -2, -12));
 	printf("printf return ==> %d\n", printf(printf_fmt, 4, -2, -12));
+	printf("ft_printf return ==> %d\n", ft_printf(ft_printf_fmt, 4, 2, -12));
+	printf("printf return ==> %d\n", printf(printf_fmt, 4, 2, -12));
 	va_end(args);
 	return (0);
 }
