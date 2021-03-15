@@ -1,52 +1,36 @@
-SRCS	= ft_printf.c ft_handlers.c flag.c pars.c ft_utils.c\
-		libft/ft_putstr.c libft/ft_isin.c\
-		libft/ft_strlen.c libft/ft_atoi.c\
-		libft/ft_bzero.c libft/ft_calloc.c\
-		libft/ft_isalpha.c libft/ft_isdigit.c\
-		libft/ft_isalnum.c libft/ft_isascii.c\
-		libft/ft_isprint.c libft/ft_memccpy.c\
-		libft/ft_memchr.c libft/ft_memcmp.c\
-		libft/ft_memcpy.c libft/ft_memset.c\
-		libft/ft_memmove.c libft/ft_strchr.c\
-		libft/ft_strdup.c libft/ft_strlcat.c\
-		libft/ft_strlcpy.c libft/ft_strlen.c\
-		libft/ft_strncmp.c libft/ft_strnstr.c\
-		libft/ft_strrchr.c libft/ft_tolower.c libft/ft_toupper.c\
-		libft/ft_strjoin.c libft/ft_strtrim.c\
-		libft/ft_substr.c libft/ft_itoa.c\
-		libft/ft_strmapi.c libft/ft_putchar_fd.c\
-		libft/ft_putstr_fd.c libft/ft_putendl_fd.c\
-		libft/ft_putnbr_fd.c libft/ft_split.c\
+SRCS	= ft_printf.c ft_handlers.c flag.c pars.c ft_utils.c
 
-OBJS		= ${SRCS:.c=.o}
-
-BONUS	= libft/ft_lstnew.c libft/ft_lstadd_front.c libft/ft_lstsize.c libft/ft_lstlast.c\
-		  libft/ft_lstadd_back.c libft/ft_lstdelone.c libft/ft_lstclear.c\
-		  libft/ft_lstiter.c libft/ft_lstmap.c\
-
-BONUS_OBJS	= ${BONUS:.c=.o}
+OBJS		= $(SRCS:.c=.o)
 
 NAME		= libftprintf.a
+
+LIB			= libft.a
+
+RED=\033[0;31m
+GREEN=\033[0;32m
+YELLOW=\033[1;33m
+NC=\033[0m
 
 CC	= gcc
 CFLAGS	= -Wall -Wextra -Werror
 RM	= rm -f
 
 .c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME):	${OBJS}
-	ar rcs ${NAME} ${OBJS}
+all:		$(NAME)
 
-all:		${NAME}
+$(NAME):	$(OBJS) $(LIB)
+	cp libft/$(LIB) $(NAME)
+	ar rcs $(NAME) $(OBJS)
 
-bonus:		all ${BONUS_OBJS}
-	ar rcs ${NAME} ${BONUS_OBJS}
+$(LIB):
+	make -C libft
 
 clean:
-	${RM} ${OBJS} ${BONUS_OBJS}
+	$(RM) $(OBJS) libft/*.o
 
 fclean:		clean
-	${RM} ${NAME}
+	$(RM) libft/$(LIB) $(NAME)
 
 re:		fclean all
