@@ -20,9 +20,9 @@ SRCS	= ft_printf.c ft_handlers.c flag.c pars.c ft_utils.c\
 
 OBJS		= ${SRCS:.c=.o}
 
-BONUS	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
-		  ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c\
-		  ft_lstiter.c ft_lstmap.c\
+BONUS	= libft/ft_lstnew.c libft/ft_lstadd_front.c libft/ft_lstsize.c libft/ft_lstlast.c\
+		  libft/ft_lstadd_back.c libft/ft_lstdelone.c libft/ft_lstclear.c\
+		  libft/ft_lstiter.c libft/ft_lstmap.c\
 
 BONUS_OBJS	= ${BONUS:.c=.o}
 
@@ -40,7 +40,7 @@ $(NAME):	${OBJS}
 
 all:		${NAME}
 
-bonus:		${BONUS_OBJS}
+bonus:		all ${BONUS_OBJS}
 	ar rcs ${NAME} ${BONUS_OBJS}
 
 clean:
